@@ -1,0 +1,14 @@
+CREATE TABLE users (
+    userID INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    passwordHash VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(20) UNIQUE NOT NULL,
+    address VARCHAR(255),
+    roleID INT NOT NULL,
+    isActive BOOLEAN DEFAULT TRUE,
+    lastLogin DATETIME,
+    createdAt DATETIME DEFAULT NOW(),
+    updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+    FOREIGN KEY (roleID) REFERENCES roles(roleID)
+);

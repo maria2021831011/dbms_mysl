@@ -1,0 +1,20 @@
+CREATE TABLE staff (
+    staffID INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    address VARCHAR(255),
+    designation VARCHAR(50),
+    salary DECIMAL(10,2),
+    salaryType ENUM('Monthly','Hourly','Commission') DEFAULT 'Monthly',
+    joinDate DATE DEFAULT current_timestamp,
+    shift ENUM('Morning','Evening','Night','Flexible') DEFAULT 'Morning',
+    workHoursPerWeek INT DEFAULT 0,
+    emergencyContact VARCHAR(100),
+    nidNumber VARCHAR(50) UNIQUE,
+    employmentStatus ENUM('Active','Inactive','Resigned','Terminated') DEFAULT 'Active',
+    bankAccount VARCHAR(100),
+    userID INT,
+    resignationDate DATE DEFAULT NULL,
+    FOREIGN KEY (userID) REFERENCES users(userID)
+);
